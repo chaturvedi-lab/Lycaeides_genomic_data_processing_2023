@@ -1,0 +1,3 @@
+filterSomeMore.pl = This is a perl script to filter variants  
+vcf2gl_depth.pl = This perl script converts vcf file to genotype likelihood file and filters variants based on depth of coverage.
+vcf2gl_maf.pl = This perl script converts vcf file to genotype likelihood file and filters variants based on minor allele frequency of SNPs.
