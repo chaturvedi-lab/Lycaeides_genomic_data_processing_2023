@@ -1,5 +1,5 @@
 # Lycaeides genomic data processing 2023
-This repository contains scripts for general processing of genomic data. Scripts are available for dealing with raw date to generating final VCF and genotype likelihood files. 
+This repository contains scripts for alignment and variant calling of Lycaeides data set for several projects in the Gompert Lab at Utah State University. However, this is a general pipeline to process Genotyping by Sequencing data and can be used to process this kind of genomic data for any study system. The repository contains folders with scripts for each step. The scripts are also available in this file.
 
 ## 1. Initial setup
 
@@ -18,7 +18,7 @@ srun --time=1:00:00 --nodes=1 --account=usubio-kp --partition=usubio-kp --pty /b
 ```
 You can use two script editors on the cluster: [Vi](https://www.linuxjournal.com/content/how-use-vi-editor-linux) or [Nano](https://www.nano-editor.org/).
 
-Most programs are installed as modules on the cluster. It is important to note the versions of the program that we use to version control our pipeline. For this program we will require the following programs/languages which can be loaded as modules on the cluster as follows:
+Most programs are installed as modules on the cluster. It is important to note the versions of the program that we use to version control our pipeline. For this round of data processing, we will require the following programs/languages which can be loaded as modules on the cluster as follows:
 
 ```bash
 module load perl
