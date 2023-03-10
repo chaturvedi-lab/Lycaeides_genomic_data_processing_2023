@@ -48,6 +48,7 @@ ln -s ln -s /uufs/chpc.utah.edu/common/home/gompert-group3/data/LmelGenome/Lmel_
 
 Our raw data is in the *fastq* format. The details of these populations are [here] (https://docs.google.com/spreadsheets/d/1BoQ_zMOSQMFbnDQyQUjsOTpUrj0nobVzOOEQ_V504Ak/edit#gid=0). I have organised all these files in this folder: /uufs/chpc.utah.edu/common/home/gompert-group1/data/lycaeides/lycaeides_gbs/Parsed_Sam/
 
-Since we are ~3800 files here, we will write out our alignments in the scratch directory on the cluster. 
+Since we are ~3800 files here, we will write out our alignments in the scratch directory on the cluster. Here is the path to my scratch directory:
+/scratch/general/nfs1/u6007910/lyc_data_processing_2023
 
 ## 3. Alignments
