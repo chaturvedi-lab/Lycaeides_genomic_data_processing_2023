@@ -1,0 +1,14 @@
+runbwamem.sh =  bash script to run alignments using bwa mem from wrap_qsub_slurm_bwa_mem.pl script
+wrap_qsub_slurm_bwa_mem.pl = wrapper perl script to run alignments using bwa mem
+wrap_qsub_slurm_sam2bam.pl = wrapper script to convert sam files to bam format
+
+filterSomeMore.pl = This is a perl script to filter variants  
+vcf2gl_depth.pl = This perl script converts vcf file to genotype likelihood file and filters variants based on depth of coverage.
+vcf2gl_maf.pl = This perl script converts vcf file to genotype likelihood file and filters variants based on minor allele frequency of SNPs.
+runVcfFilter_af.sh = basg script to run vcfFilter_af.pl script below on the cluster
+runFilterSomeMore.sh  = bash script to run filterSomeMore.pl on the cluster
+vcfFilter_af.pl = perl script to filter variants based on allele frequencies
+lycaeidesVariantcalling.sh = bash script to do variant calling 
+
+
+
