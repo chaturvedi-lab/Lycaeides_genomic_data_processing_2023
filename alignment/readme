@@ -1,8 +1,0 @@
-filterSomeMore.pl = perl script to filter variants
-runbwamem.sh =  bash script to run alignments using bwa mem from wrap_qsub_slurm_bwa_mem.pl script
-runVcfFilter_af.sh = basg script to run vcfFilter_af.pl script below on the cluster
-wrap_qsub_slurm_bwa_mem.pl = wrapper perl script to run alignments using bwa mem
-lycaeidesVariantcalling.sh = bash script to do variant calling 
-runFilterSomeMore.sh  = bash script to run filterSomeMore.pl on the cluster
-vcfFilter_af.pl = perl script to filter variants based on allele frequencies
-wrap_qsub_slurm_sam2bam.pl = wrapper script to convert sam files to bam format
