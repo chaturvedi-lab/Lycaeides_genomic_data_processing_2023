@@ -1,0 +1,4 @@
+runbwamem.sh =  bash script to run alignments using bwa mem from wrap_qsub_slurm_bwa_mem.pl script
+wrap_qsub_slurm_bwa_mem.pl = wrapper perl script to run alignments using bwa mem
+lycaeidesVariantcalling.sh = bash script to do variant calling 
+wrap_qsub_slurm_sam2bam.pl = wrapper script to convert sam files to bam format
