@@ -48,7 +48,72 @@ ln -s ln -s /uufs/chpc.utah.edu/common/home/gompert-group3/data/LmelGenome/Lmel_
 
 Our raw data is in the *fastq* format. The details of these populations are [here] (https://docs.google.com/spreadsheets/d/1BoQ_zMOSQMFbnDQyQUjsOTpUrj0nobVzOOEQ_V504Ak/edit#gid=0). I have organised all these files in this folder: /uufs/chpc.utah.edu/common/home/gompert-group1/data/lycaeides/lycaeides_gbs/Parsed_Sam/
 
+**IN TOTAL WE HAVE 3903 INDIVIDUALS**
+
 Since we are ~3800 files here, we will write out our alignments in the scratch directory on the cluster. Here is the path to my scratch directory:
 /scratch/general/nfs1/u6007910/lyc_data_processing_2023
 
 ## 3. Alignments
+
+## 4. Variant calling
+Total number of individuals = 3903
+I followed the following steps for variant calling and filtering. The steps are listed based on the name of the scripts which corresponds to the scripts in the Variants folder.
+Step 1. Calling variants from bam files and converting bcf to vcf
+
+Script: 1_variantcalling.sh
+Output file: raw_variants.bcf, raw_variants.vcf
+The number of variants retained in this file = 3,058,172
+
+2. First round of filtering
+
+Script: 2_vcffilter_af.pl, 2_runvcffilter_af.sh
+Output file: filtered2x_variants.vcf
+Variants retained after first round of filtering = 145,647
+
+I then got the depth for the retained variants and created a scaffold position SNPs file for the next round of filtering as follows:
+
+```bash
+grep ^Sc filtered2x_raw_variants.vcf | cut -f 8 | cut -d ';' -f 1| grep -o '[0-9]*' > depth_filtered2X.txt
+
+grep ^Sc filtered2x_raw_variants.vcf | cut -f 1 | cut -d '_' -f 2 | cut -d ';' -f 1 > scaffold_filtered2X.txt
+
+grep ^Sc filtered2x_raw_variants.vcf | cut -f 2 > positions_filtered2X.txt
+
+paste scaffold_filtered2X.txt positions_filtered2X.txt > snps_filtered2X.txt
+```
+I then used R to calculate some basic stats about the depth we have for the retained variants.
+
+```R
+#calculate coverage for second round of filtering in R
+d<-read.table("depth_filtered2X.txt", header=F)
+mean = mean(as.numeric(d[,1]))
+sd = sd(as.numeric(d[,1]))
+cov = mean + 2*sd
+```
+Here are the basic stats I got for the next round of filtering:
+Max depth/cov = 638965
+Max depth/cov = 12579
+Mean depth/cov = 46473.89
+SD depth/cov = 24391.27
+Median depth/cov = 40720
+#This is what I used for the next step:
+cov calculated as mean + 2sd = 95256.44
+
+3. Second round of filtering
+
+Script: 3_vcffilter_somemore.pl
+Output file: morefilter_variants.vcf
+Variants retained after second round of filtering = 89,294
+
+Here the parameters I specified for the data that I have is as follows:
+
+
+4. Convert vcf to genotype likelihood file
+
+Script: 4_convert_vcf2gl_depth.pl
+
+Usage:
+```perl
+perl 4_convert_vcf2gl_depth.pl 0.05 morefilter_variants.vcf #Number of loci: 72937; number of individuals 3912
+
+```
