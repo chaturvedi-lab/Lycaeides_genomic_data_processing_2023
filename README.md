@@ -53,6 +53,8 @@ Our raw data is in the *fastq* format. The details of these populations are [her
 Since we are ~3800 files here, we will write out our alignments in the scratch directory on the cluster. Here is the path to my scratch directory:
 /scratch/general/nfs1/u6007910/lyc_data_processing_2023
 
+All the data files are here: /uufs/chpc.utah.edu/common/home/gompert-group4/projects/schaturvedi/sc_lycaeides_data_processing_2023
+
 ## 3. Alignments
 
 ## 4. Variant calling
